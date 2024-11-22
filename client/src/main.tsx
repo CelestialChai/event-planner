@@ -6,6 +6,7 @@ import App from './App.tsx'
 import './index.css'
 
 import HomePage from './pages/home.tsx'
+import CreateEvent from './pages/CreateEvent.tsx'
 
 const router = createBrowserRouter([
   {
@@ -17,10 +18,10 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />
       }, 
-      // {
-      //   path: '/show-volunteers',
-      //   element: <VolunteerPage />
-      // },
+      {
+        path: '/new-event',
+        element: <CreateEvent />
+      },
       // {
       //   path: '/new-volunteer',
       //   element: <VolunteerForm />

@@ -2,7 +2,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { Sequelize } from 'sequelize';
-// import { UserFactory } from './user.js';
+import { EventFactory } from './event.js';
+import { UserFactory } from './user.js';
+
 
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
@@ -19,6 +21,8 @@ const sequelize = process.env.DB_URL
       }
     );
 
-// const User = UserFactory(sequelize);
+const Event = EventFactory(sequelize);
+const User = UserFactory(sequelize);
 
-// export { sequelize, User };
+
+export { sequelize, User, Event };
