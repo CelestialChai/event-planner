@@ -5,14 +5,6 @@ interface JwtPayload {
   username: string;
 }
 
-declare global {
-    namespace Express {
-      interface Request {
-        user?: JwtPayload | string;
-      }
-    }
-  }
-
 export const authenticateToken = (
   req: Request,
   res: Response,
