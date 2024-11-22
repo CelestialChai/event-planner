@@ -5,6 +5,7 @@ import { Sequelize } from 'sequelize';
 import { EventFactory } from './event.js';
 import { UserFactory } from './user.js';
 
+
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
   : new Sequelize(
