@@ -79,7 +79,7 @@ export const getEventsById = async (req: Request, res: Response) => {
 
 // POST /Events
 export const createEvent = async (req: Request, res: Response) => {
-    const { customer_Id, title, description, location, start_date, budget } = req.body; 
+    const { customer_Id = null, title, description, location, start_date, budget } = req.body; 
     const planner_Id = req.user?.id;
 
     if (!planner_Id) {
