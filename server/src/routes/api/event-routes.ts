@@ -9,19 +9,19 @@ import {
 
 const router = express.Router();
 
-// GET /users - Get all users
+// GET /event - Get all event
 router.get('/', getAllEvents);
 
-// GET /users/:id - Get a user by id
+// GET /event/:id - Get a event by id
 router.get('/:id', getEventsById);
 
-// POST /users - Create a new user
+// POST /event - Create a new event
 router.post('/', createEvent);
 
-// PUT /users/:id - Update a user by id
+// PUT /event/:id - Update a event by id
 router.put('/:id', updateEvent);
 
-// DELETE /users/:id - Delete a user by id
+// DELETE /event/:id - Delete a event by id
 router.delete('/:id', deleteEvent);
 
 export { router as eventRouter };
