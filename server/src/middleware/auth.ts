@@ -1,7 +1,8 @@
-import type { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 interface JwtPayload {
+  id: number;
   username: string;
 }
 
@@ -14,19 +15,22 @@ export const authenticateToken = (
 
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-
     const secretKey = process.env.JWT_SECRET_KEY || '';
 
-    jwt.verify(token, secretKey, (err, user) => {
-      if (err) {
-        return res.sendStatus(403); // Forbidden
-      }
+    console.log('Authorization Header:', authHeader);
+    console.log('Extracted Token:', token);
+    console.log('Secret Key:', secretKey);
 
-      req.user = user as JwtPayload;
-      return next();
-    });
+    try {
+      const user = jwt.verify(token, secretKey) as JwtPayload;
+      console.log('Decoded User:', user);
+      req.user = user; // Attach the user's info to req.user
+      next();
+    } catch (error) {
+      console.error('Token Verification Error:', error);
+      res.status(403).json({ message: 'Forbidden' });
+    }
   } else {
-    res.sendStatus(401); // Unauthorized
+    res.status(401).json({ message: 'Unauthorized' });
   }
 };
-
