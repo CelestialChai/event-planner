@@ -1,28 +1,14 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import sequelize from '../config/connection.js';
 
-import { Sequelize } from 'sequelize';
 import { EventFactory } from './event.js';
 import { UserFactory } from './user.js';
-
-
-const sequelize = process.env.DB_URL
-  ? new Sequelize(process.env.DB_URL)
-  : new Sequelize(
-      process.env.DB_NAME || '',
-      process.env.DB_USER || '',
-      process.env.DB_PASSWORD,
-      {
-        host: 'localhost',
-        dialect: 'postgres',
-        dialectOptions: {
-          decimalNumbers: true,
-        },
-      }
-    );
 
 const Event = EventFactory(sequelize);
 const User = UserFactory(sequelize);
 
+Event.belongsTo(User, { foreignKey: 'planner_Id', as: 'planner' });
+Event.belongsTo(User, { foreignKey: 'customer_Id', as: 'customer' });
+User.hasMany(Event, { foreignKey: 'planner_Id', as: 'plannedEvents' });
+User.hasMany(Event, { foreignKey: 'customer_Id', as: 'customerEvents' });
 
 export { sequelize, User, Event };
