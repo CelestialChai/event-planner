@@ -1,13 +1,14 @@
 import React from "react";
 import { Drawer, List, ListItem, ListItemText, ListItemIcon, Button, Box, Tooltip } from "@mui/material";
-import { Home, Event, Lock, Info, Place, Login, PersonAdd, CalendarMonth } from "@mui/icons-material";
+import { Home, Event, Lock, Info, Place, Login, PersonAdd, CalendarMonth, Create, BorderColor } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
 
   const menuItems = [
-    { text: "Create", icon: <Home />, path: "/create" },
+    { text: "Home", icon: <Home />, path: "/homepage" },
+    { text: "Create", icon: <BorderColor />, path: "/create" },
     { text: "My Events", icon: <Event />, path: "/my-events" },
     { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
     { text: "About Us", icon: <Info />, path: "/about-us" },
