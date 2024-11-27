@@ -1,5 +1,4 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 import { addUser } from '../api/userAPI';
 import type { NewUserData } from '../interfaces/NewUserData';
@@ -14,7 +13,6 @@ const SignUp = () => {
   // Added error state for signing up new user
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -54,7 +52,6 @@ const SignUp = () => {
       console.log(response)
 
       setMessage('User created successfully!');
-      navigate('/create');
     } catch (err) {
       console.error('Failed to login', err);
     }
