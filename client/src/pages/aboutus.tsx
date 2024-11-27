@@ -21,25 +21,25 @@ const teamMembers = [
   },
   {
     name: "Amanda",
-    role: "Creative Powerhouse",
+    role: "Creative Powerhouse Wizard",
     description:
       "Amanda, a creative powerhouse with a background in event design, dreamed up the user-friendly interface and vibrant aesthetics that define our platform. Her love for colors, themes, and typography ensures every couple's experience feels personal and inspiring.",
   },
   {
     name: "Anthony",
-    role: "Organizational Genius",
+    role: "Organizational Genius Wizard",
     description:
       "Anthony, the organizational genius, poured his heart into crafting tools that help couples stay on top of their planning. With his background in logistics and event coordination, he ensured the platform is packed with features like automated reminders, task management, and a centralized dashboard.",
   },
   {
     name: "Larry",
-    role: "Storyteller",
+    role: "Storyteller Wizard",
     description:
       "Larry, the storyteller of the group, focused on creating content that connects. His knack for communication shaped our blogs, tips, and vendor recommendations, ensuring couples feel supported and empowered every step of the way.",
   },
   {
     name: "Meyer",
-    role: "Numbers Guru",
+    role: "Numbers Guru Wizard",
     description:
       "Meyer, our numbers guru, streamlined the budgeting tools to make tracking expenses a breeze. His expertise ensures every couple can confidently manage their finances while making room for those magical, once-in-a-lifetime splurges.",
   },
@@ -95,7 +95,7 @@ const AboutUs: React.FC = () => {
 
       {/* Team Section */}
       <Typography variant="h5" component="h2" sx={{ marginBottom: 2 }}>
-        Meet the Team
+        Meet the Wizards
       </Typography>
       <Box
         sx={{
