@@ -51,15 +51,14 @@ const SignUp = () => {
         throw new Error(errorData.message || 'Failed to create user');
       }
 
+      console.log(response)
+
       setMessage('User created successfully!');
       navigate('/create');
     } catch (err) {
       console.error('Failed to login', err);
     }
   };
-
-  console.log(message);
-  console.log(error);
 
   return (
     <div className='form-container'>
