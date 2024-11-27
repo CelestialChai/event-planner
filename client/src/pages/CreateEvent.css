@@ -1,0 +1,123 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ed0808;
+  margin: 0; 
+  padding: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full viewport height */
+  color: #333;
+}
+
+/* Container for the form */
+create-event {
+  background-color: rgba(237, 11, 11, 0.899);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+  width: 80%;               /* Ensure the form takes up the available width */
+  max-width: 600px;          /* Limit maximum width of the form */
+  min-width: 320px;
+  box-sizing: border-box;    /* Make sure padding does not affect width */
+  
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  color: #045c23;
+  font-size: 36px; /* Adjust font size to be more reasonable */
+  margin-bottom: 20px; /* Add some space below the title */
+}
+
+/* Input and select fields styling */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="checkbox"] {
+  width: 100%; /* Ensure inputs take up the full width of the container */
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #0e0c0c;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensure padding does not affect total width */
+}
+
+/* Checkbox specific styling */
+input[type="checkbox"] {
+  width: auto;
+  margin: 10px 10px;
+  display: inline;
+}
+
+/* Focused input and select fields styling */
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Label styling */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Button takes full width of the form */
+  margin-top: 10px;
+}
+
+/* Hover effect for submit button */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for required fields (when RSVP is required) */
+input[required] {
+  background-color: #f0f8ff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+
+  h1 {
+    font-size: 24px; /* Smaller title for mobile */
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"] {
+    font-size: 14px; /* Smaller input font size for mobile */
+  }
+
+  button[type="submit"] {
+    font-size: 14px; /* Smaller button font size for mobile */
+  }
+}
