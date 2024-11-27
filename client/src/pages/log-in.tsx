@@ -1,73 +1,116 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-  .modal-header, h4, .close {
-    background-color: #5cb85c;
-    color:white !important;
-    text-align: center;
-    font-size: 30px;
-  }
-  .modal-footer {
-    background-color: #f9f9f9;
-  }
-  </style>
-</head>
-<body>
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap styles
+import { Modal, Button, Form, Checkbox } from 'react-bootstrap'; // Import Bootstrap components
 
-<div class="container">
-  <h2>Modal Login Example</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+const LoginModal = () => {
+  const [show, setShow] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-        </div>
-        <div class="modal-body" style="padding:40px 50px;">
-          <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
-      </div>
-      
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Username: ", username);
+    console.log("Password: ", password);
+    console.log("Remember Me: ", rememberMe);
+    handleClose(); // Close the modal on submit
+  };
+
+  return (
+    <div className="container">
+      <h2>Modal Login Example</h2>
+      <Button variant="primary" size="lg" onClick={handleShow}>
+        Login
+      </Button>
+
+      {/* Modal */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <span className="glyphicon glyphicon-lock"></span> Login
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>
+                <span className="glyphicon glyphicon-user"></span> Username
+              </Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>
+                <span className="glyphicon glyphicon-eye-open"></span> Password
+              </Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Check
+              type="checkbox"
+              label="Remember me"
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+            />
+
+            <Button variant="success" type="submit" block>
+              <span className="glyphicon glyphicon-off"></span> Login
+            </Button>
+          </Form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            <span className="glyphicon glyphicon-remove"></span> Cancel
+          </Button>
+          <p>
+            Not a member? <a href="#">Sign Up</a>
+          </p>
+          <p>
+            Forgot <a href="#">Password?</a>
+          </p>
+        </Modal.Footer>
+      </Modal>
     </div>
-  </div> 
-</div>
- 
-<script>
-$(document).ready(function(){
-  $("#myBtn").click(function(){
-    $("#myModal").modal();
-  });
-});
-</script>
+  );
+};
 
-</body>
-</html>
+export default LoginModal;
+import React from 'react';
+import LoginModal from './LoginModal'; // Adjust path as needed
+
+const App = () => {
+  return (
+    <div className="App">
+      <LoginModal />
+    </div>
+  );
+};
+
+export default App;
+import React from 'react';
+import LoginModal from './LoginModal'; // Adjust path as needed
+
+const App = () => {
+  return (
+    <div className="App">
+      <LoginModal />
+    </div>
+  );
+};
+
+export default Ap
