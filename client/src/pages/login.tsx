@@ -50,12 +50,8 @@ const Login = () => {
     } catch (err: any) {
       console.error("Failed to login:", err);
   
-      // Display error message
-      if (err.message === "Invalid username or password") {
-        setError(err.message);
-      } else {
-        setError("An unexpected error occurred. Please try again later.");
-      }
+      // Display error message      
+      setError(err.message);
     }
   };
 
