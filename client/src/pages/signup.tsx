@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
+import { Box, Button, TextField, Typography, Alert } from "@mui/material";
 import Auth from '../utils/auth';
 import { addUser } from '../api/userAPI';
 import type { NewUserData } from '../interfaces/NewUserData';
@@ -15,7 +16,7 @@ const SignUp = () => {
   const [message, setMessage] = useState<string | null>(null);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     setUserData({
@@ -39,13 +40,9 @@ const SignUp = () => {
   
     try {
       const response = await addUser(userData);
-
-      console.log(response)
   
       // If the response is not okay, handle the error
       if (!response.ok) {
-        console.log("reponse")
-        console.log(response)
         const errorData = await response.json(); // Parse the error response
         throw new Error(errorData.message || 'Failed to create user');
       }
@@ -56,63 +53,132 @@ const SignUp = () => {
       setMessage('User created successfully!');
     } catch (err: any) {
       console.error('Failed to create user:', err.message);
-      console.log(err.Error)
       setError(err.message); // Display the error message from the backend
     }
   };
 
   return (
-    <div className='form-container'>
+    <Box
+      sx={{
+        maxWidth: "400px",
+        margin: "2rem auto",
+        padding: "2rem",
+        borderRadius: "8px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "white",
+      }}
+    >
+      <Typography variant="h4" component="h1" gutterBottom align="center">
+        Create User
+      </Typography>
       {error && (
-        <div className='card text-danger p-3'>
+        <Alert severity="error" sx={{ marginBottom: "1rem" }}>
           {error}
-        </div>
+        </Alert>
       )}
-      <form className='form add-user-form' onSubmit={handleSubmit}>
-        <h1>Create User</h1>
-        <div className='form-group'>
-          <label>Username</label>
-          <input
-            placeholder='Username'
-            className='form-input'
-            type='text'
-            name='username'
-            value={userData.username || ''}
+      {message && (
+        <Alert severity="success" sx={{ marginBottom: "1rem" }}>
+          {message}
+        </Alert>
+      )}
+      <form onSubmit={handleSubmit}>
+        <Box sx={{ marginBottom: "1rem" }}>
+          <TextField
+            fullWidth
+            label="Username"
+            name="username"
+            type='' //needs to be blank for styling reasons
+            value={userData.username}
             onChange={handleChange}
+            variant="outlined"
           />
-        </div>
-        <div className='form-group'>
-          <label>Email</label>
-          <input
-            placeholder='Email'
-            className='form-input'
-            type='text'
-            name='email'
-            value={userData.email || ''}
+        </Box>
+        <Box sx={{ marginBottom: "1rem" }}>
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type='' //needs to be blank for styling reasons
+            value={userData.email}
             onChange={handleChange}
+            variant="outlined"
           />
-        </div>
-        <div className='form-group'>
-          <label>Password</label>
-          <input
-            placeholder='Password'
-            className='form-input'
-            type='password'
-            name='password'
-            value={userData.password || ''}
+        </Box>
+        <Box sx={{ marginBottom: "1rem" }}>
+          <TextField
+            fullWidth
+            label="Password"
+            name="password"
+            type="password"
+            value={userData.password}
             onChange={handleChange}
+            variant="outlined"
           />
-        </div>
-        <div className='form-group'>
-          <button className='btn btn-primary' type='submit'>
-            Login
-          </button>
-        </div>
+        </Box>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ padding: "0.75rem" }}
+        >
+          Create Account
+        </Button>
       </form>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </div>
+    </Box>
   );
+  // return (
+  //   <div className='form-container'>
+  //     {error && (
+  //       <div className='card text-danger p-3'>
+  //         {error}
+  //       </div>
+  //     )}
+  //     <form className='form add-user-form' onSubmit={handleSubmit}>
+  //       <h1>Create User</h1>
+  //       <div className='form-group'>
+  //         <label>Username</label>
+  //         <input
+  //           placeholder='Username'
+  //           className='form-input'
+  //           type='text'
+  //           name='username'
+  //           value={userData.username || ''}
+  //           onChange={handleChange}
+  //         />
+  //       </div>
+  //       <div className='form-group'>
+  //         <label>Email</label>
+  //         <input
+  //           placeholder='Email'
+  //           className='form-input'
+  //           type='text'
+  //           name='email'
+  //           value={userData.email || ''}
+  //           onChange={handleChange}
+  //         />
+  //       </div>
+  //       <div className='form-group'>
+  //         <label>Password</label>
+  //         <input
+  //           placeholder='Password'
+  //           className='form-input'
+  //           type='password'
+  //           name='password'
+  //           value={userData.password || ''}
+  //           onChange={handleChange}
+  //         />
+  //       </div>
+  //       <div className='form-group'>
+  //         <button className='btn btn-primary' type='submit'>
+  //           Login
+  //         </button>
+  //       </div>
+  //     </form>
+  //     {message && <p style={{ color: 'green' }}>{message}</p>}
+  //     {error && <p style={{ color: 'red' }}>{error}</p>}
+  //   </div>
+  // );
 };
 
 export default SignUp;
