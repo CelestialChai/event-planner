@@ -33,15 +33,19 @@ const addUser = async (userInfo: NewUserData) => {
     });
 
     const data = await response.json();
-
+    
     if (!response.ok) {
-      throw new Error('User information not retrieved, check network tab!');
+      // console.log("Throwing Error")
+      // console.log(data)
+      // throw new Error('User information not retrieved, check network tab!');
+      throw new Error(data.message);
     }
 
     return data;
   } catch (err) {
     console.log('Error from add new user: ', err);
-    return Promise.reject('Could not add new user');
+    // return Promise.reject('Could not add new user');
+    return Promise.reject(err);
   }
 };
 

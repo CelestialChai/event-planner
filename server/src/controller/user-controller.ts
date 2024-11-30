@@ -12,12 +12,16 @@ export const createUser = async (req: Request, res: Response) => {
     const newUser = await User.create({ username, email, password });
 
     const token = getNewToken(id, username);
-    res.status(201).json({ ...newUser, token });
+    return res.status(201).json({ ...newUser, token });
   } catch (error: any) {
     if (error.name === 'SequelizeUniqueConstraintError') {
-      res.status(400).json({ message: 'Username or email already exists' });
+      console.log("user already exists")
+      return res.status(400).json({ message: 'Username or email already exists' });
     }
-    res.status(500).json({ message: 'Internal server error' });
+    else if (error.name === 'SequelizeValidationError') {
+      return res.status(400).json({ message: 'Not a properly formatted email' });
+    }
+    return res.status(500).json({ message: 'Internal server error' });
   }
 };
 

@@ -26,34 +26,38 @@ const SignUp = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+  
     setMessage(null);
     setError(null);
-
+  
     // SIMPLE VALIDATION:
-    // When user submits, if they haven't completed all fields, set error state and return out of submit event handler
     const { username, email, password } = userData;
     if (!username || !email || !password) {
       setError('Please complete all fields!');
       return;
-    } else {
-      setError('');
     }
-
+  
     try {
-      const response  = await addUser(userData);
-      Auth.login(response.token);
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to create user');
-      }
+      const response = await addUser(userData);
 
       console.log(response)
-
+  
+      // If the response is not okay, handle the error
+      if (!response.ok) {
+        console.log("reponse")
+        console.log(response)
+        const errorData = await response.json(); // Parse the error response
+        throw new Error(errorData.message || 'Failed to create user');
+      }
+  
+      const data = await response.json();
+      Auth.login(data.token); // Assuming `token` is returned after user creation
+  
       setMessage('User created successfully!');
-    } catch (err) {
-      console.error('Failed to login', err);
+    } catch (err: any) {
+      console.error('Failed to create user:', err.message);
+      console.log(err.Error)
+      setError(err.message); // Display the error message from the backend
     }
   };
 
