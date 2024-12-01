@@ -4,7 +4,7 @@ import { Home, Event, Lock, Info, Place } from "@mui/icons-material";
 // import { Login, PersonAdd, CalendarMonth }  from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import auth from '../utils/auth';
-import tykLogo from './client/src/assets/WeddingPlanner/tykLogo.png';
+import tykLogo from '../assets/WeddingPlanner/tykLogo.png';
 
 
 

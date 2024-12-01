@@ -1,14 +1,14 @@
 // import React from "react";
 import './LandingPage.css'
-import skyline from './assets/WeddingPlanner/skyline.jpg'
-import table from './assets/WeddingPlanner/table.jpg'
-import bride from './assets/WeddingPlanner/bride.jpg'
-import ballroom from './assets/WeddingPlanner/ballroom.jpg'
-import aisle from './assets/WeddingPlanner/aisle.jpg'
-import barn from './assets/WeddingPlanner/barn.jpg'
-import flowers from './assets/WeddingPlanner/flowers.jpg'
-import beach from './assets/WeddingPlanner/beach.jpg'
-import dance from './assets/WeddingPlanner/dance.jpg'
+import skyline from '../assets/WeddingPlanner/skyline.jpg'
+import table from '../assets/WeddingPlanner/table.jpg'
+import bride from '../assets/WeddingPlanner/bride.jpg'
+import ballroom from '../assets/WeddingPlanner/ballroom.jpg'
+import aisle from '../assets/WeddingPlanner/aisle.jpg'
+import barn from '../assets/WeddingPlanner/barn.jpg'
+import flowers from '../assets/WeddingPlanner/flowers.jpg'
+import beach from '../assets/WeddingPlanner/beach.jpg'
+import dance from '../assets/WeddingPlanner/dance.jpg'
 
 const WeddingLandingPage = () => {
   return (

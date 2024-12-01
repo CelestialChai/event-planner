@@ -1,5 +1,5 @@
 import React from "react";
-import tykLogo from './assets/WeddingPlanner/tykLogo.png'; // Adjust the path to where the logo is located
+import tykLogo from '../assets/WeddingPlanner/tykLogo.png'; // Adjust the path to where the logo is located
 
 const Venues: React.FC = () => {
   return (
