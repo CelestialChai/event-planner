@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Tabs, Tab, Box } from "@mui/material";
 import CalendarComponent from "../components/calender";
 
+
+
 const MyEvents: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -10,6 +12,7 @@ const MyEvents: React.FC = () => {
   };
 
   return (
+    
     <Box sx={{ width: "100%" }}>
       <Tabs
         value={activeTab}
@@ -17,7 +20,7 @@ const MyEvents: React.FC = () => {
         indicatorColor="primary"
         textColor="primary"
         centered
-      >
+      >  
         <Tab label="Event List" />
         <Tab label="Calendar" />
       </Tabs>
@@ -25,6 +28,10 @@ const MyEvents: React.FC = () => {
         {activeTab === 0 && <div>Your Event List goes here</div>}
         {activeTab === 1 && <CalendarComponent />}
       </Box>
+       {/* Footer */}
+       <footer className="py-6 bg-gray-800 text-center text-gray-400">
+        <p>&copy; 2024 Tie Your Knot. All Rights Reserved.</p>
+      </footer>
     </Box>
   );
 };

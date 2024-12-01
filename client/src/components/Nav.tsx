@@ -4,6 +4,9 @@ import { Home, Event, Lock, Info, Place, BorderColor,} from "@mui/icons-material
 // import { Login, PersonAdd, CalendarMonth }  from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import auth from '../utils/auth';
+import tykLogo from '../assets/WeddingPlanner/tykLogo.png';
+
+
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
@@ -20,15 +23,17 @@ const NavigationBar: React.FC = () => {
     auth.logout();
     setIsLoggedIn(false);
   };
-  
-  const menuItems = [
-    { text: "Home", icon: <Home />, path: "/" },
-    { text: "Create", icon: <BorderColor />, path: "/create" },
-    { text: "My Events", icon: <Event />, path: "/my-events" },
-    { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
-    { text: "About Us", icon: <Info />, path: "/about-us" },
-    { text: "Venues", icon: <Place />, path: "/venues" },
-  ];
+
+    const menuItems = [
+      { text: "Home", icon: <Home />, path: "/" },
+      { text: "Create", icon: <BorderColor />, path: "/create" },
+      { text: "My Events", icon: <Event />, path: "/my-events" },
+      { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
+      { text: "About Us", icon: <Info />, path: "/about-us" },
+      { text: "Venues", icon: <Place />, path: "/venues" },
+      { text : "RSVP", icon: <Event />, path: "/RSVPform" },
+    ];
+
 
   return (
     <Drawer
@@ -43,6 +48,9 @@ const NavigationBar: React.FC = () => {
     >
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <List>
+          <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
+            <img src={ tykLogo } alt="TYK Logo" style={{ width: "80%", height: "auto" }} />
+          </Box>
           {menuItems.map((item) => (
             <ListItem
               key={item.text}

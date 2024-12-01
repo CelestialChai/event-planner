@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   Fade,
 } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
+
 
 // Detailed information about each team member
 const teamMembers = [
@@ -46,6 +48,7 @@ const teamMembers = [
 ];
 
 const AboutUs: React.FC = () => {
+
   const [open, setOpen] = useState(false);
   const [currentMember, setCurrentMember] = useState<null | typeof teamMembers[0]>(null);
 
@@ -210,3 +213,4 @@ const AboutUs: React.FC = () => {
 };
 
 export default AboutUs;
+
