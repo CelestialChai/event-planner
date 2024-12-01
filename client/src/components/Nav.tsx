@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Drawer, List, ListItem, ListItemText, ListItemIcon, Button, Box, Tooltip } from "@mui/material";
-import { Home, Event, Lock, Info, Place, Login, PersonAdd, CalendarMonth, Create, BorderColor } from "@mui/icons-material";
+import { Home, Event, Lock, Info, Place, Login, PersonAdd, CalendarMonth, BorderColor } from "@mui/icons-material";
+// import { Login, PersonAdd, CalendarMonth, Create }  from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
+import auth from '../utils/auth';
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    // Check if a token exists in localStorage to determine if the user is logged in
+    const loginCheck = auth.loggedIn();
+    setIsLoggedIn(loginCheck); // Set true if the token exists
+  }, []);
+
+  const handleLogout = () => {
+    // Clear the token and redirect to the login page
+    auth.logout();
+    setIsLoggedIn(false);
+  };
+  
   const menuItems = [
     { text: "Home", icon: <Home />, path: "/homepage" },
     { text: "Create", icon: <BorderColor />, path: "/create" },
@@ -44,23 +59,35 @@ const NavigationBar: React.FC = () => {
           ))}
         </List>
         <Box sx={{ mt: "auto", p: 2, textAlign: "center" }}>
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link as React.ElementType}
-            to="/login"
-            sx={{ marginBottom: 1 }}
-          >
-            Login
-          </Button>
-          <Button
-            variant="outlined"
-            color="secondary"
-            component={Link as React.ElementType}
-            to="/sign-up"
-          >
-            Sign Up
-          </Button>
+        {isLoggedIn ? (
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          ) : (
+            <>
+              <Button
+                variant="contained"
+                color="primary"
+                component={Link as React.ElementType}
+                to="/login"
+                sx={{ marginBottom: 1 }}
+              >
+                Login
+              </Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={Link as React.ElementType}
+                to="/sign-up"
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
         </Box>
       </Box>
     </Drawer>

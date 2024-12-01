@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './RSVPForm.css';
+import './RSVPform.css';
 
 // Define the RSVP interface
 interface RSVP {
