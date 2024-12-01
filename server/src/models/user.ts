@@ -40,10 +40,15 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true, // Ensure email format is valid
+        },
       },
       password: {
         type: DataTypes.STRING,
