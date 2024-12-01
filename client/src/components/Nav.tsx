@@ -1,19 +1,19 @@
 import React from "react";
-import { Drawer, List, ListItem, ListItemText, ListItemIcon, Button, Box, Tooltip } from "@mui/material";
-import { Home, Event, Lock, Info, Place, Login, PersonAdd, CalendarMonth, Create, BorderColor } from "@mui/icons-material";
+import { Drawer, List, ListItem, ListItemText, ListItemIcon, Button, Box, Tooltip,} from "@mui/material";
+import { Home, Event, Lock, Info, Place, BorderColor,} from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
 
   const menuItems = [
-    { text: "Home", icon: <Home />, path: "/homepage" },
+    { text: "Home", icon: <Home />, path: "/" },
     { text: "Create", icon: <BorderColor />, path: "/create" },
     { text: "My Events", icon: <Event />, path: "/my-events" },
     { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
     { text: "About Us", icon: <Info />, path: "/about-us" },
     { text: "Venues", icon: <Place />, path: "/venues" },
-    ];
+  ];
 
   return (
     <Drawer
@@ -30,11 +30,15 @@ const NavigationBar: React.FC = () => {
         <List>
           {menuItems.map((item) => (
             <ListItem
-              button
               key={item.text}
               component={Link as React.ElementType}
               to={item.path}
+              role="button"
               selected={location.pathname === item.path}
+              sx={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               <Tooltip title={item.text} placement="right">
                 <ListItemIcon>{item.icon}</ListItemIcon>
@@ -47,7 +51,7 @@ const NavigationBar: React.FC = () => {
           <Button
             variant="contained"
             color="primary"
-            component={Link as React.ElementType}
+            component={Link}
             to="/login"
             sx={{ marginBottom: 1 }}
           >
@@ -56,7 +60,7 @@ const NavigationBar: React.FC = () => {
           <Button
             variant="outlined"
             color="secondary"
-            component={Link as React.ElementType}
+            component={Link}
             to="/sign-up"
           >
             Sign Up

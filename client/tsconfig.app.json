@@ -25,5 +25,5 @@
     "declaration": true
   },
   "extends": "./tsconfig.json",
-  "include": ["src/**/*", "src/types"]
+  "include": ["src/**/*", "src/types", "google_end/gAuthURL.ts", "google_end/OAuth.ts", "google_end/gAuthRoute.ts", "google_end/googleapis.ts"]
 }
