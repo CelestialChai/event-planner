@@ -10,11 +10,7 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-
-    /* Required for composite projects */
-    "outDir": "./dist",
-    "composite": true,
-    "declaration": true,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,
@@ -22,6 +18,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "extends": "./tsconfig.json",
   "include": ["vite.config.ts"]
 }
