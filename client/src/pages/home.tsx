@@ -8,7 +8,7 @@ const HomePage = () => {
                 Plan your perfect event with ease and confidence!
             </p>
             <div style={{ marginTop: '20px' }}>
-                <Link to="/create" style={{ marginRight: '10px' }}>
+                <Link to="/sign-up" style={{ marginRight: '10px' }}>
                     <button style={{ padding: '10px 20px', fontSize: '1rem', cursor: 'pointer' }}>
                         Get Started
                     </button>
