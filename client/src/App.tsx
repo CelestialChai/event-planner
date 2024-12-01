@@ -6,15 +6,15 @@ import HomePage from './pages/home';
 import CreateEvent from "./pages/CreateEvent";
 import MyEvents from "./pages/myevents";
 import Unlocks from "./pages/unlocks";
-import AboutUs from "./pages/aboutus";
 import Venues from "./pages/venues";
 import WeddingLandingPage from "./pages/LandingPage"
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import CalendarComponent from "./components/calender";
 import RSVPform from "./pages/RSVPform";
-import GoogleSignIn from './components/GoogleSignIn';
 import ErrorPage from './pages/error';
+import AboutUs from './pages/aboutus';
+import GoogleCalendarIntegration from './components/GoogleCalenderIntergration';
 
   // Debug Component to Log Current Location
 const DebugLocation: React.FC = () => {
@@ -41,23 +41,23 @@ function Layout() {
   );
 }
 
-  export default function App() {
-    return (
-      <Routes>
-       <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/create" element={<CreateEvent />} />
-          <Route path="/my-events" element={<MyEvents />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/unlocks" element={<Unlocks />} />
-          <Route path="/venues" element={<Venues />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/landfall" element={<WeddingLandingPage />} />
-          <Route path="/calendar" element={<CalendarComponent />} />
-          <Route path="/RSVPform" element={<RSVPform />} />
-          <Route path="google-sign-in" element={<GoogleSignIn />} />
-  
+export default function App() {
+  return (
+    <Routes>
+     <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/create" element={<CreateEvent />} />
+        <Route path="/my-events" element={<MyEvents />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/unlocks" element={<Unlocks />} />
+        <Route path="/venues" element={<Venues />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/landfall" element={<WeddingLandingPage />} />
+        <Route path="/calendar" element={<CalendarComponent />} />
+        <Route path="/RSVPform" element={<RSVPform />} />
+        <Route path="google-sign-in" element={<GoogleCalendarIntegration />} />
+
           {/* Catch-All Route for Undefined Paths */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
