@@ -4,6 +4,9 @@ import { Home, Event, Lock, Info, Place } from "@mui/icons-material";
 // import { Login, PersonAdd, CalendarMonth }  from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import auth from '../utils/auth';
+import tykLogo from './client/src/assets/WeddingPlanner/tykLogo.png';
+
+
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
@@ -22,11 +25,15 @@ const NavigationBar: React.FC = () => {
   };
   
   const menuItems = [
-    { text: "Create", icon: <Home />, path: "/create" },
-    { text: "My Events", icon: <Event />, path: "/my-events" },
+    { text: "Home", icon: <Home />, path: "/pages/LandingPage" },
+    { text: "Create Event", icon: <Home />, path: "/pages/CreateEvent" },
+    { text: "My Events", icon: <Event />, path: "/pages/myevents" },
+    { text: "Calendar", icon: <Event />, path: "components/calendar" },
     { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
-    { text: "About Us", icon: <Info />, path: "/about-us" },
-    { text: "Venues", icon: <Place />, path: "/venues" },
+    { text: "About Us", icon: <Info />, path: "/pages/aboutus" },
+    { text: "Venues", icon: <Place />, path: "/pages/venues" },
+    { text : "RSVP", icon: <Event />, path: "/pages/RSVPform" },
+
     ];
 
   return (
@@ -42,6 +49,9 @@ const NavigationBar: React.FC = () => {
     >
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <List>
+          <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
+            <img src={ tykLogo } alt="TYK Logo" style={{ width: "80%", height: "auto" }} />
+          </Box>
           {menuItems.map((item) => (
             <ListItem
               button

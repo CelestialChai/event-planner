@@ -1,11 +1,20 @@
 // import React from "react";
 import './LandingPage.css'
+import skyline from './assets/WeddingPlanner/skyline.jpg'
+import table from './assets/WeddingPlanner/table.jpg'
+import bride from './assets/WeddingPlanner/bride.jpg'
+import ballroom from './assets/WeddingPlanner/ballroom.jpg'
+import aisle from './assets/WeddingPlanner/aisle.jpg'
+import barn from './assets/WeddingPlanner/barn.jpg'
+import flowers from './assets/WeddingPlanner/flowers.jpg'
+import beach from './assets/WeddingPlanner/beach.jpg'
+import dance from './assets/WeddingPlanner/dance.jpg'
 
 const WeddingLandingPage = () => {
   return (
     <div className="bg-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-md">
+      <header className="bg-pink-600 shadow-md">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-pink-600">Tie Your Knot</h1>
           <nav className="space-x-6">
@@ -30,11 +39,7 @@ const WeddingLandingPage = () => {
 
       {/* Hero Section */}
       <section
-        className="bg-cover bg-center h-screen text-white"
-        style={{
-          backgroundImage: "url('back 1.jpg')",
-        }}
-      >
+         className="bg-cover bg-center h-screen text-white bg">
         <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-40">
           <h1 className="text-4xl lg:text-6xl font-bold">
             Your Dream Wedding Awaits
@@ -50,23 +55,26 @@ const WeddingLandingPage = () => {
 
       {/* Services Section */}
       <section id="services" className="py-16 bg-white">
-        <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-screen-xl">
           <h2 className="text-3xl font-bold text-center text-gray-800">
             Our Services
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-              <h3 className="text-2xl font-semibold text-pink-600">
+                <h3 className="text-2xl font-semibold text-pink-600">
                 Venue Selection
-              </h3>
+                </h3>
+                <img src={skyline} alt="Wedding Skyline" style={{ width: "80%", height: "auto", margin: "0 auto" }} />
               <p className="text-gray-600 mt-4">
                 Choose from the best venues for your big day.
+
               </p>
             </div>
             <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
               <h3 className="text-2xl font-semibold text-pink-600">
                 Catering Services
               </h3>
+              <img src={table} alt="Dinner Table" style={{ width: "80%", height: "auto", margin: "0 auto" }} />
               <p className="text-gray-600 mt-4">
                 A wide range of menus crafted by top chefs.
               </p>
@@ -75,6 +83,7 @@ const WeddingLandingPage = () => {
               <h3 className="text-2xl font-semibold text-pink-600">
                 Photography
               </h3>
+              <img src={bride} alt="Bride Photo" style={{ width: "80%", height: "auto", margin: "0 auto" }} />
               <p className="text-gray-600 mt-4">
                 Capture every precious moment with professional photographers.
               </p>
@@ -85,27 +94,27 @@ const WeddingLandingPage = () => {
 
       {/* Pictures/Moments Section */}
       <section id="moments" className="py-16 bg-white">
-        <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-screen-xl">
           <h2 className="text-3xl font-bold text-center text-gray-800">
             Cherished Moments
           </h2>
           <p className="text-center text-gray-600 mt-4">
-            Relive the magic through stunning moments captured during our
+            Relive the magic through stunning moments captured during your
             weddings.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <img
-              src="wed 2.jpg"
+              src={dance}
               alt="Moment 1"
               className="rounded-lg shadow-md"
             />
             <img
-              src="wed 4.jpg"
+              src={beach}
               alt="Moment 2"
               className="rounded-lg shadow-md"
             />
             <img
-              src="wed 5.jpg"
+              src={flowers}
               alt="Moment 3"
               className="rounded-lg shadow-md"
             />
@@ -115,7 +124,7 @@ const WeddingLandingPage = () => {
 
       {/* Venues Section */}
       <section id="venues" className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 max-w-screen-xl">
           <h2 className="text-3xl font-bold text-center text-gray-800">
             Exquisite Venues
           </h2>
@@ -128,6 +137,7 @@ const WeddingLandingPage = () => {
               <h3 className="text-xl font-semibold text-pink-600">
                 Grand Ballroom
               </h3>
+              <img src={ballroom} alt="Ballroom Venue" style={{ width: "80%", height: "auto", margin: "0 auto" }} />
               <p className="text-gray-600 mt-2">
                 A spacious venue for luxurious celebrations.
               </p>
@@ -136,6 +146,7 @@ const WeddingLandingPage = () => {
               <h3 className="text-xl font-semibold text-pink-600">
                 Garden Bliss
               </h3>
+              <img src={aisle} alt="Garden Venue" style={{ width: "80%", height: "auto", margin: "0 auto" }} />
               <p className="text-gray-600 mt-2">
                 Perfect for outdoor weddings with breathtaking views.
               </p>
@@ -144,6 +155,7 @@ const WeddingLandingPage = () => {
               <h3 className="text-xl font-semibold text-pink-600">
                 Rustic Barn
               </h3>
+              <img src={barn} alt="Barn Venue" style={{ width: "80%", height: "40%", margin: "0 auto" }} />
               <p className="text-gray-600 mt-2">
                 A charming choice for a cozy, intimate wedding.
               </p>
@@ -163,18 +175,18 @@ const WeddingLandingPage = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <img
-              src="cake 1.jpg"
-              alt="Catering 1"
+              src="/WeddingPlanner/cake.jpg"
+              alt="Wedding Cake"
               className="rounded-lg shadow-md"
             />
             <img
-              src="cake 2.jpg"
-              alt="Catering 2"
+              src="/WeddingPlanner/food-apps.jpg"
+              alt="Food Spread"
               className="rounded-lg shadow-md"
             />
             <img
-              src="cake 3.jpg"
-              alt="Catering 3"
+              src="/WeddingPlanner/buffet.jpg"
+              alt="Buffet Spread"
               className="rounded-lg shadow-md"
             />
           </div>
@@ -192,17 +204,17 @@ const WeddingLandingPage = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <img
-              src="deco 1.jpg"
-              alt="Photo 1"
+              src="/WeddingPlanner/rings.jpg"
+              alt="Wedding Rings"
               className="rounded-lg shadow-md"
             />
             <img
-              src="deco 2.jpg"
-              alt="Photo 2"
+              src="/WeddingPlanner/shoes.jpg"
+              alt="Bride's Shoes"
               className="rounded-lg shadow-md"
             />
             <img
-              src="deco 3.jpg"
+              src="/WeddingPlanner/heartHands.jpg"
               alt="Photo 3"
               className="rounded-lg shadow-md"
             />

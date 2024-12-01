@@ -122,6 +122,10 @@ const CreateEvent = () => {
                 <button type="submit">Create Event</button>
             </form>
         </div>
+         {/* Footer */}
+      <footer className="py-6 bg-gray-800 text-center text-gray-400">
+        <p>&copy; 2024 Tie Your Knot. All Rights Reserved.</p>
+      </footer>
         </div>
     );
 };
