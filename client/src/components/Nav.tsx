@@ -23,18 +23,15 @@ const NavigationBar: React.FC = () => {
     auth.logout();
     setIsLoggedIn(false);
   };
-  
-  const menuItems = [
 
-    { text: "Home", icon: <Home />, path: "/pages/LandingPage" },
-    { text: "Create Event", icon: <Home />, path: "/pages/CreateEvent" },
-    { text: "My Events", icon: <Event />, path: "/pages/myevents" },
-    { text: "Calendar", icon: <Event />, path: "components/calendar" },
-    { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
-    { text: "About Us", icon: <Info />, path: "/pages/aboutus" },
-    { text: "Venues", icon: <Place />, path: "/pages/venues" },
-    { text : "RSVP", icon: <Event />, path: "/pages/RSVPform" },
-
+    const menuItems = [
+      { text: "Home", icon: <Home />, path: "/" },
+      { text: "Create", icon: <BorderColor />, path: "/create" },
+      { text: "My Events", icon: <Event />, path: "/my-events" },
+      { text: "Unlocks", icon: <Lock />, path: "/unlocks" },
+      { text: "About Us", icon: <Info />, path: "/about-us" },
+      { text: "Venues", icon: <Place />, path: "/venues" },
+      { text : "RSVP", icon: <Event />, path: "/RSVPform" },
     ];
 
 
