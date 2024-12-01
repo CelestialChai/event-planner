@@ -127,58 +127,6 @@ const SignUp = () => {
       </form>
     </Box>
   );
-  // return (
-  //   <div className='form-container'>
-  //     {error && (
-  //       <div className='card text-danger p-3'>
-  //         {error}
-  //       </div>
-  //     )}
-  //     <form className='form add-user-form' onSubmit={handleSubmit}>
-  //       <h1>Create User</h1>
-  //       <div className='form-group'>
-  //         <label>Username</label>
-  //         <input
-  //           placeholder='Username'
-  //           className='form-input'
-  //           type='text'
-  //           name='username'
-  //           value={userData.username || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <label>Email</label>
-  //         <input
-  //           placeholder='Email'
-  //           className='form-input'
-  //           type='text'
-  //           name='email'
-  //           value={userData.email || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <label>Password</label>
-  //         <input
-  //           placeholder='Password'
-  //           className='form-input'
-  //           type='password'
-  //           name='password'
-  //           value={userData.password || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <button className='btn btn-primary' type='submit'>
-  //           Login
-  //         </button>
-  //       </div>
-  //     </form>
-  //     {message && <p style={{ color: 'green' }}>{message}</p>}
-  //     {error && <p style={{ color: 'red' }}>{error}</p>}
-  //   </div>
-  // );
 };
 
 export default SignUp;
