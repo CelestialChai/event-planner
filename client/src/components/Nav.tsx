@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Drawer, List, ListItem, ListItemText, ListItemIcon, Button, Box, Tooltip } from "@mui/material";
-import { Home, Event, Lock, Info, Place } from "@mui/icons-material";
+import { Home, Event, Lock, Info, Place, BorderColor,} from "@mui/icons-material";
 // import { Login, PersonAdd, CalendarMonth }  from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import auth from '../utils/auth';
@@ -25,6 +25,7 @@ const NavigationBar: React.FC = () => {
   };
   
   const menuItems = [
+
     { text: "Home", icon: <Home />, path: "/pages/LandingPage" },
     { text: "Create Event", icon: <Home />, path: "/pages/CreateEvent" },
     { text: "My Events", icon: <Event />, path: "/pages/myevents" },
@@ -35,6 +36,7 @@ const NavigationBar: React.FC = () => {
     { text : "RSVP", icon: <Event />, path: "/pages/RSVPform" },
 
     ];
+
 
   return (
     <Drawer
@@ -54,11 +56,15 @@ const NavigationBar: React.FC = () => {
           </Box>
           {menuItems.map((item) => (
             <ListItem
-              button
               key={item.text}
               component={Link as React.ElementType}
               to={item.path}
+              role="button"
               selected={location.pathname === item.path}
+              sx={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               <Tooltip title={item.text} placement="right">
                 <ListItemIcon>{item.icon}</ListItemIcon>

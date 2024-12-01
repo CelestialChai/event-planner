@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer, Event, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Button, Toolbar } from "@mui/material";
 
-// Define the event type
 interface CalendarEvent extends Event {
   title: string;
   start: Date;
@@ -14,22 +13,56 @@ interface CalendarEvent extends Event {
 
 const localizer = momentLocalizer(moment);
 
-const events: CalendarEvent[] = [
-  {
-    title: "Meeting",
-    start: new Date(2024, 10, 25, 10, 0), // Nov 25, 2024, 10:00 AM
-    end: new Date(2024, 10, 25, 12, 0),   // Nov 25, 2024, 12:00 PM
-    allDay: false,
-  },
-  {
-    title: "Conference",
-    start: new Date(2024, 10, 26),
-    end: new Date(2024, 10, 28),
-    allDay: true,
-  },
-];
-
 const CalendarComponent: React.FC = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID";
+
+  useEffect(() => {
+    // Initialize Google Sign-In
+    window.google?.accounts.id.initialize({
+      client_id: CLIENT_ID,
+      callback: handleCredentialResponse,
+    });
+
+    // Render the Google Sign-In button
+    window.google?.accounts.id.renderButton(
+      document.getElementById("google-signin-button"),
+      { theme: "outline", size: "large" }
+    );
+  }, []);
+
+  const handleCredentialResponse = async (response: any) => {
+    console.log("Encoded JWT ID token:", response.credential);
+    setIsSignedIn(true);
+    fetchGoogleCalendarEvents(response.credential);
+  };
+
+  const fetchGoogleCalendarEvents = async (token: string) => {
+    try {
+      const res = await fetch(
+        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await res.json();
+
+      // Map Google events to Big Calendar events
+      const mappedEvents = data.items.map((event: any) => ({
+        title: event.summary || "Untitled Event",
+        start: new Date(event.start.dateTime || event.start.date),
+        end: new Date(event.end.dateTime || event.end.date),
+        allDay: !event.start.dateTime, // If dateTime is undefined, it's an all-day event
+      }));
+      setEvents(mappedEvents);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
   const handleEventClick = (event: CalendarEvent) => {
     alert(`Event: ${event.title}`);
   };
@@ -63,19 +96,26 @@ const CalendarComponent: React.FC = () => {
 
   return (
     <div style={{ height: "80vh", margin: "20px" }}>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: "100%" }}
-        views={[Views.MONTH, Views.WEEK, Views.DAY]}
-        onSelectEvent={handleEventClick}
-        eventPropGetter={eventStyleGetter}
-        components={{
-          toolbar: CustomToolbar,
-        }}
-      />
+      {!isSignedIn ? (
+        <div>
+          <h1>Sign in with Google to Access Your Calendar</h1>
+          <div id="google-signin-button"></div>
+        </div>
+      ) : (
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: "100%" }}
+          views={[Views.MONTH, Views.WEEK, Views.DAY]}
+          onSelectEvent={handleEventClick}
+          eventPropGetter={eventStyleGetter}
+          components={{
+            toolbar: CustomToolbar,
+          }}
+        />
+      )}
     </div>
   );
 };
