@@ -7,11 +7,15 @@ import CreateEvent from './pages/CreateEvent';
 import ErrorPage from './pages/error';
 import MyEvents from './pages/myevents';
 import AboutUs from './pages/aboutus';
-// import Unlocks from './pages/unlocks';
-// import Venues from './pages/venues';
+import Unlocks from './pages/unlocks';
+import Venues from './pages/venues';
 import SignUp from './pages/signup';
 import { Login } from '@mui/icons-material';
 import {EventProvider } from './context/EventContext';
+import WeddingLandingPage from './pages/LandingPage';
+import CalendarComponent from './components/calender';
+import RSVPForm from './pages/RSVPform';
+import GoogleCalendarIntegration from './components/GoogleCalenderIntergration';
 
 
 
@@ -37,18 +41,18 @@ const router = createBrowserRouter([
         path: '/about-us',
         element: <AboutUs />,
       },
-      // {
-      //   path: '/unlocks',
-      //   element: <Unlocks />,
-      // },
+      {
+        path: '/unlocks',
+        element: <Unlocks />,
+      },
       {
         path: '/my-events',
         element: <MyEvents />,
       },
-      // {
-      //   path: '/venues',
-      //   element: <Venues />,
-      // },
+      {
+        path: '/venues',
+        element: <Venues />,
+      },
       {
         path: '/login',
         element: <Login />,
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
       {
         path: '/sign-up',
         element: <SignUp/>,
+      },
+      {
+        path: '/landfall',
+        element: <WeddingLandingPage/>,
+      },
+      {
+        path: '/calender',
+        element: <CalendarComponent/>,
+      },
+      {
+        path: '/RSVPform',
+        element: <RSVPForm/>,
+      },
+      {
+        path: '/google-sign-in',
+        element: <GoogleCalendarIntegration/>,
       },
 
       // Add other routes here as needed
