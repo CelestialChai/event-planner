@@ -5,8 +5,8 @@ import { Box, CssBaseline } from "@mui/material";
 import HomePage from './pages/home';
 import CreateEvent from "./pages/CreateEvent";
 import MyEvents from "./pages/myevents";
-// import Unlocks from "./pages/unlocks";
-// import Venues from "./pages/venues";
+import Unlocks from "./pages/unlocks";
+import Venues from "./pages/venues";
 import WeddingLandingPage from "./pages/LandingPage"
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
@@ -49,15 +49,15 @@ export default function App() {
         <Route path="/create" element={<CreateEvent />} />
         <Route path="/my-events" element={<MyEvents />} />
         <Route path="/about-us" element={<AboutUs />} />
-        {/* <Route path="/unlocks" element={<Unlocks />} />
-                <Route path="/venues" element={<Venues />} /> */}
+        <Route path="/unlocks" element={<Unlocks />} />
+        <Route path="/venues" element={<Venues />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/landfall" element={<WeddingLandingPage />} />
         <Route path="/calendar" element={<CalendarComponent />} />
         <Route path="/RSVPform" element={<RSVPform />} />
         <Route path="google-sign-in" element={<GoogleCalendarIntegration />} />
-  
+
           {/* Catch-All Route for Undefined Paths */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
