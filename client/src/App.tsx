@@ -41,7 +41,6 @@ function Layout() {
   );
 }
 
-// Router Setup with Routes and Layout
 export default function App() {
   return (
     <Routes>
@@ -58,10 +57,12 @@ export default function App() {
         <Route path="/calendar" element={<CalendarComponent />} />
         <Route path="/RSVPform" element={<RSVPform />} />
         <Route path="google-sign-in" element={<GoogleCalendarIntegration />} />
-
-        {/* Catch-All Route for Undefined Paths */}
-        <Route path="*" element={<ErrorPage />} />
-      </Route>
-    </Routes>
-  );
+  
+          {/* Catch-All Route for Undefined Paths */}
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    );
 }
+
+

@@ -3,6 +3,8 @@ import { Tabs, Tab, Box, List, ListItem, ListItemText, Button, Typography } from
 import CalendarComponent from "../components/calender";
 import { useEventContext } from "../context/EventContext";
 
+
+
 const MyEvents: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const { events, fetchEvents } = useEventContext(); // Access events and fetch function from context
@@ -12,6 +14,7 @@ const MyEvents: React.FC = () => {
   };
 
   return (
+    
     <Box sx={{ width: "100%" }}>
       {/* Tabs for switching views */}
       <Tabs
@@ -20,7 +23,7 @@ const MyEvents: React.FC = () => {
         indicatorColor="primary"
         textColor="primary"
         centered
-      >
+      >  
         <Tab label="Event List" />
         <Tab label="Calendar" />
       </Tabs>
@@ -74,6 +77,10 @@ const MyEvents: React.FC = () => {
         {/* Calendar Tab */}
         {activeTab === 1 && <CalendarComponent />}
       </Box>
+       {/* Footer */}
+       <footer className="py-6 bg-gray-800 text-center text-gray-400">
+        <p>&copy; 2024 Tie Your Knot. All Rights Reserved.</p>
+      </footer>
     </Box>
   );
 };

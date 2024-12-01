@@ -28,6 +28,7 @@ class AuthService {
       }
     } catch (err) {
       // If decoding fails (e.g., due to an invalid token format), catch the error and return false.
+      console.error(err);
       return false;
     }
   }
