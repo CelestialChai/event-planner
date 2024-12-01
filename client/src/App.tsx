@@ -14,7 +14,8 @@ import SignUp from "./pages/signup";
 import CalendarComponent from "./components/calender";
 import RSVPform from "./pages/RSVPform";
 import GoogleSignIn from './components/GoogleSignIn';
-  
+import ErrorPage from './pages/error';
+
   // Debug Component to Log Current Location
 const DebugLocation: React.FC = () => {
   const location = useLocation();
@@ -45,12 +46,13 @@ export default function App() {
   return (
     <Routes>
      <Route path="/" element={<Layout />}>
+        <Route path="/home" element={}
         <Route path="/CreateEvent" element={<CreateEvent />} />
         <Route path="/my-events" element={<MyEvents />} />
         {/* <Route path="/unlocks" element={<Unlocks />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/venues" element={<Venues />} /> */}
-        <Route path="/login" element={<Login />} /> 
+        <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/landfall" element={<WeddingLandingPage />} />
         <Route path="/calendar" element={<CalendarComponent />} />
