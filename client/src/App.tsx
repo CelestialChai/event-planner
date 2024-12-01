@@ -12,7 +12,8 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import CalendarComponent from './components/calender';
 import ErrorPage from './pages/error';
-import RSVPform from "./pages/RSVPform";
+import RSVPform from './pages/RSVPform';
+import GoogleSignIn from './components/GoogleSignIn';
 
 // Layout Component for Navigation and Main Content
 function Layout() {
@@ -35,8 +36,10 @@ function Layout() {
 export default function App() {
   return (
     <Routes>
-     <Route path="/" element={<Layout />}>
-        <Route path="/create" element={<Create />} />
+      {/* Main layout */}
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/create" element={<CreateEvent />} />
         <Route path="/my-events" element={<MyEvents />} />
         <Route path="/unlocks" element={<Unlocks />} />
         <Route path="/about-us" element={<AboutUs />} />
@@ -44,6 +47,9 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/calendar" element={<CalendarComponent />} />
+        <Route path="/google-sign-in" element={<GoogleSignIn />} />
+        {/* Catch-all route for errors */}
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
   );
