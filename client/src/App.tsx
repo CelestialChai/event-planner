@@ -6,7 +6,6 @@ import HomePage from './pages/home';
 import CreateEvent from "./pages/CreateEvent";
 import MyEvents from "./pages/myevents";
 // import Unlocks from "./pages/unlocks";
-// import AboutUs from "./pages/aboutus";
 // import Venues from "./pages/venues";
 import WeddingLandingPage from "./pages/LandingPage"
 import Login from "./pages/login";
