@@ -9,8 +9,9 @@ import MyEvents from './pages/myevents';
 import AboutUs from './pages/aboutus';
 // import Unlocks from './pages/unlocks';
 // import Venues from './pages/venues';
-// import SignUp from './pages/signup';
+import SignUp from './pages/signup';
 import { Login } from '@mui/icons-material';
+import {EventProvider } from './context/EventContext';
 
 
 
@@ -52,10 +53,10 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />,
       },
-      // {
-      //   path: '/sign-up',
-      //   element: <SignUp/>,
-      // },
+      {
+        path: '/sign-up',
+        element: <SignUp/>,
+      },
 
       // Add other routes here as needed
 
@@ -72,6 +73,8 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
+    <EventProvider>
+      <RouterProvider router={router} />
+    </EventProvider>
   );
 }

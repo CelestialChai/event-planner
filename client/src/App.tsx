@@ -13,9 +13,9 @@ import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import CalendarComponent from "./components/calender";
 import RSVPform from "./pages/RSVPform";
-import GoogleSignIn from './components/GoogleSignIn';
 import ErrorPage from './pages/error';
 import AboutUs from './pages/aboutus';
+import GoogleCalendarIntegration from './components/GoogleCalenderIntergration';
 
   // Debug Component to Log Current Location
 const DebugLocation: React.FC = () => {
@@ -58,7 +58,7 @@ export default function App() {
         <Route path="/landfall" element={<WeddingLandingPage />} />
         <Route path="/calendar" element={<CalendarComponent />} />
         <Route path="/RSVPform" element={<RSVPform />} />
-        <Route path="google-sign-in" element={<GoogleSignIn />} />
+        <Route path="google-sign-in" element={<GoogleCalendarIntegration />} />
 
         {/* Catch-All Route for Undefined Paths */}
         <Route path="*" element={<ErrorPage />} />
