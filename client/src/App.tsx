@@ -43,9 +43,9 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/create" element={<CreateEvent />} />
         <Route path="/my-events" element={<MyEvents />} />
-        {/* <Route path="/unlocks" element={<Unlocks />} />
+        {/* <Route path="/unlocks" element={<Unlocks />} /> */}
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/venues" element={<Venues />} /> */}
+        {/* <Route path="/venues" element={<Venues />} /> */}
         <Route path="/login" element={<Login />} /> 
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/landfall" element={<WeddingLandingPage />} />
