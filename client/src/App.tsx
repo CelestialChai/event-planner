@@ -16,7 +16,6 @@ import CalendarComponent from "./components/calender";
 import RSVPform from "./pages/RSVPform";
 import GoogleSignIn from './components/GoogleSignIn';
 import ErrorPage from './pages/error';
-import AboutUs from './pages/aboutus';
 
   // Debug Component to Log Current Location
 const DebugLocation: React.FC = () => {
