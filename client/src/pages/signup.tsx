@@ -53,7 +53,7 @@ const SignUp = () => {
   
       setMessage('User created successfully!');
     } catch (err: any) {
-      console.error('Failed to create user:', err.message);
+      console.error('Failed to create user:', err);
       setError(err.message); // Display the error message from the backend
     }
   };

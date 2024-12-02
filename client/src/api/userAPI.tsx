@@ -44,7 +44,7 @@ const addUser = async (userInfo: NewUserData) => {
       // console.log("Throwing Error")
       // console.log(data)
       // throw new Error('User information not retrieved, check network tab!');
-      throw new Error(data.message);
+      throw new Error(data);
     }
 
     return data;
