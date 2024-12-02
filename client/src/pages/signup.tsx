@@ -40,14 +40,15 @@ const SignUp = () => {
   
     try {
       const response = await addUser(userData);
-  
+
       // If the response is not okay, handle the error
       if (!response.ok) {
         const errorData = await response.json(); // Parse the error response
         throw new Error(errorData.message || 'Failed to create user');
       }
   
-      const data = await response.json();
+      const data = response;
+
       Auth.login(data.token); // Assuming `token` is returned after user creation
   
       setMessage('User created successfully!');
