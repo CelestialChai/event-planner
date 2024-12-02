@@ -11,7 +11,7 @@ const DebugLocation: React.FC = () => {
 };
 
 // Layout Component for Navigation and Main Content
-const Layout: React.FC = () => {
+const App: React.FC = () => {
   return (
     <>
       <CssBaseline />
@@ -28,4 +28,4 @@ const Layout: React.FC = () => {
   );
 };
 
-export default Layout;
+export default App;
