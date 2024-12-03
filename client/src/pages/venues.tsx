@@ -18,10 +18,10 @@ const Venues: React.FC = () => {
           We're working hard to bring you the best venues for your dream wedding. Stay tuned!
         </p>
       </main>
-
+      
        {/* Footer */}
        <footer className="py-6 bg-gray-800 text-center text-gray-400">
-        <p>&copy; 2024 Tie Your Knots. All Rights Reserved.</p>
+        <p>&copy; 2024 Tie Your Knot. All Rights Reserved.</p>
       </footer>
     </div>
   );
