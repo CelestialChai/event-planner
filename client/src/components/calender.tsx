@@ -16,7 +16,7 @@ const localizer = momentLocalizer(moment);
 const CalendarComponent: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID";
+  const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   useEffect(() => {
     // Initialize Google Sign-In
