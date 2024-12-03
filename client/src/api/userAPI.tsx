@@ -32,13 +32,19 @@ const addUser = async (userInfo: NewUserData) => {
       body: JSON.stringify(userInfo),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
     const data = await response.json();
+    data.ok = response.ok; // Pulling data forward
     
     if (!response.ok) {
       // console.log("Throwing Error")
       // console.log(data)
       // throw new Error('User information not retrieved, check network tab!');
-      throw new Error(data.message);
+      throw new Error(data);
     }
 
     return data;

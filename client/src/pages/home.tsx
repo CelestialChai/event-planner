@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/auth";
 
 const HomePage = () => {
+    const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Auth.loggedIn()) {
+      // Redirect to another page if the user is logged in
+      navigate("/landfall");
+    }
+  }, [navigate]);
+
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
             <h1 style={{ fontSize: '3rem', color: '#4CAF50' }}>Tie Your Knot</h1>

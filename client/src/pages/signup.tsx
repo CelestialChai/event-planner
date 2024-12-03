@@ -40,19 +40,20 @@ const SignUp = () => {
   
     try {
       const response = await addUser(userData);
-  
+
       // If the response is not okay, handle the error
       if (!response.ok) {
         const errorData = await response.json(); // Parse the error response
         throw new Error(errorData.message || 'Failed to create user');
       }
   
-      const data = await response.json();
+      const data = response;
+
       Auth.login(data.token); // Assuming `token` is returned after user creation
   
       setMessage('User created successfully!');
     } catch (err: any) {
-      console.error('Failed to create user:', err.message);
+      console.error('Failed to create user:', err);
       setError(err.message); // Display the error message from the backend
     }
   };
@@ -127,58 +128,6 @@ const SignUp = () => {
       </form>
     </Box>
   );
-  // return (
-  //   <div className='form-container'>
-  //     {error && (
-  //       <div className='card text-danger p-3'>
-  //         {error}
-  //       </div>
-  //     )}
-  //     <form className='form add-user-form' onSubmit={handleSubmit}>
-  //       <h1>Create User</h1>
-  //       <div className='form-group'>
-  //         <label>Username</label>
-  //         <input
-  //           placeholder='Username'
-  //           className='form-input'
-  //           type='text'
-  //           name='username'
-  //           value={userData.username || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <label>Email</label>
-  //         <input
-  //           placeholder='Email'
-  //           className='form-input'
-  //           type='text'
-  //           name='email'
-  //           value={userData.email || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <label>Password</label>
-  //         <input
-  //           placeholder='Password'
-  //           className='form-input'
-  //           type='password'
-  //           name='password'
-  //           value={userData.password || ''}
-  //           onChange={handleChange}
-  //         />
-  //       </div>
-  //       <div className='form-group'>
-  //         <button className='btn btn-primary' type='submit'>
-  //           Login
-  //         </button>
-  //       </div>
-  //     </form>
-  //     {message && <p style={{ color: 'green' }}>{message}</p>}
-  //     {error && <p style={{ color: 'red' }}>{error}</p>}
-  //   </div>
-  // );
 };
 
 export default SignUp;

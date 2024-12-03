@@ -1,80 +1,45 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
+import './index.css';
+
 import HomePage from './pages/home';
 import CreateEvent from './pages/CreateEvent';
-import ErrorPage from './pages/error';
 import MyEvents from './pages/myevents';
+import Unlocks from './pages/unlocks';
 import AboutUs from './pages/aboutus';
-// import Unlocks from './pages/unlocks';
-// import Venues from './pages/venues';
+import Venues from './pages/venues';
+import WeddingLandingPage from './pages/LandingPage';
+import Login from './pages/login';
 import SignUp from './pages/signup';
-import { Login } from '@mui/icons-material';
-import {EventProvider } from './context/EventContext';
-
-
+import CalendarComponent from './components/calender';
+import RSVPform from './pages/RSVPform';
+import GoogleSignIn from './components/GoogleSignIn';
+import ErrorPage from './pages/error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,  // Error boundary for the entire app
+    errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: '/create',
-        element: <CreateEvent />,
-      },
-      {
-        path: '/my-events',
-        element: <MyEvents />,
-      },
-      {
-        path: '/about-us',
-        element: <AboutUs />,
-      },
-      // {
-      //   path: '/unlocks',
-      //   element: <Unlocks />,
-      // },
-      {
-        path: '/my-events',
-        element: <MyEvents />,
-      },
-      // {
-      //   path: '/venues',
-      //   element: <Venues />,
-      // },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/sign-up',
-        element: <SignUp/>,
-      },
-
-      // Add other routes here as needed
-
-      // Catch-all route for unmatched paths
-      {
-        path: '*',  // Will catch any unmatched path
-        element: <ErrorPage />,
-      },
+      { index: true, element: <HomePage /> },
+      { path: 'create', element: <CreateEvent /> },
+      { path: 'my-events', element: <MyEvents /> },
+      { path: 'about-us', element: <AboutUs /> },
+      { path: 'unlocks', element: <Unlocks /> },
+      { path: 'venues', element: <Venues /> },
+      { path: 'login', element: <Login /> },
+      { path: 'sign-up', element: <SignUp /> },
+      { path: 'landfall', element: <WeddingLandingPage /> },
+      { path: 'calendar', element: <CalendarComponent /> },
+      { path: 'RSVPform', element: <RSVPform /> },
+      { path: 'google-sign-in', element: <GoogleSignIn /> },
     ],
   },
 ]);
 
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router} />
+);
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(
-    <EventProvider>
-      <RouterProvider router={router} />
-    </EventProvider>
-  );
-}
