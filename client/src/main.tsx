@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
-
+import { EventProvider } from './context/EventContext';
 import HomePage from './pages/home';
 import CreateEvent from './pages/CreateEvent';
 import MyEvents from './pages/myevents';
@@ -14,7 +14,7 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import CalendarComponent from './components/calender';
 import RSVPform from './pages/RSVPform';
-import GoogleSignIn from './components/GoogleSignIn';
+import GoogleCalendarIntegration from './components/GoogleCalenderIntergration';
 import ErrorPage from './pages/error';
 
 const router = createBrowserRouter([
@@ -34,12 +34,14 @@ const router = createBrowserRouter([
       { path: 'landfall', element: <WeddingLandingPage /> },
       { path: 'calendar', element: <CalendarComponent /> },
       { path: 'RSVPform', element: <RSVPform /> },
-      { path: 'google-sign-in', element: <GoogleSignIn /> },
+      { path: 'google-sign-in', element: <GoogleCalendarIntegration /> },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <EventProvider>
+    <RouterProvider router={router} />
+  </EventProvider>
 );
 
